@@ -16,10 +16,5 @@ namespace YAGNI
         {
             Console.WriteLine($"Product {productId} deleted.");
         }
-
-        public void GenerateProductReport()
-        {
-            Console.WriteLine("Generating product report....");
-        }
     }
 }

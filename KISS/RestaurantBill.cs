@@ -3,24 +3,29 @@ namespace KISS
 {
     public class RestaurantBill
     {
+        private decimal _total = 0;
+        private const decimal _tipPercentageBase = 0.10m;
+
+
         public decimal CalculateTotal(decimal[] prices, decimal? tipPercentage)
         {
-            decimal total = 0;
 
-            for (int i = 0; i < prices.Length; i++)
+            
+            foreach (var pr in prices)
             {
-                total += prices[i];
+                _total += pr;
             }
 
             if (tipPercentage.HasValue)
             {
-                total += total * (tipPercentage.Value / 100);
+                _total += _total * (tipPercentage.Value / 100);
             }
             else
             {
-                total += total * 0.10m;
+                _total += _total * _tipPercentageBase;
             }
-            return total;
+
+            return _total;
         }
     }
 }

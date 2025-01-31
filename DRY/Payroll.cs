@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace DRY
 {
     public class Payroll
     {
+        private decimal _bonusPorcentage = 0.05m;
+        private decimal _taxPorcentage = 0.18m;
+
+
         public decimal CalculateSalaryForFullTime(decimal baseSalary)
-        {
-            decimal tax = baseSalary * 0.18m;
-            decimal bonus = baseSalary * 0.05m;
-            return baseSalary - tax + bonus;
-        }
+            =>baseSalary - CalculateTax(baseSalary) + CalculateBonus(baseSalary);
+    
 
         public decimal CalculateSalaryForPartTime(decimal hourlyRate, int hoursWorked)
         {
             decimal salary = hourlyRate * hoursWorked;
-            decimal tax = salary * 0.18m;
-            decimal bonus = salary * 0.05m;
-            return salary - tax + bonus;
+            return salary - CalculateTax(salary) + CalculateBonus(salary);
         }
+
+        public decimal CalculateTax(decimal salary)
+            => salary * _taxPorcentage;
+
+        public decimal CalculateBonus(decimal salary)
+            => salary * _bonusPorcentage;
     }
 }

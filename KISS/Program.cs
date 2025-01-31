@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            decimal[]  prices = { 100, 200, 300 };
+
         }
     }
 }

@@ -7,6 +7,32 @@ Objetivo:
 Refactoriza el código para aplicar KISS, eliminando la complejidad innecesaria y haciéndolo más
 claro y fácil de entender
 
+namespace KISS
+{
+    public class RestaurantBill
+    {
+        public decimal CalculateTotal(decimal[] prices, decimal? tipPercentage)
+        {
+            decimal total = 0;
+
+            for (int i = 0; i < prices.Length; i++)
+            {
+                total += prices[i];
+            }
+
+            if (tipPercentage.HasValue)
+            {
+                total += total * (tipPercentage.Value / 100);
+            }
+            else
+            {
+                total += total * 0.10m;
+            }
+            return total;
+        }
+    }
+}
+
 Requerimientos:
 • El usuario ingresará los precios de los platos (separados por comas).
 • Se preguntará si desea agregar una propina personalizada o usar la predeterminada del

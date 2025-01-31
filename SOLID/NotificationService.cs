@@ -18,11 +18,16 @@ namespace SOLID
             Console.WriteLine($"Sending SMS to {phoneNumber}: {message}");
         }
 
+
+
+
+    }
+
+    public class LogNofication
+    {
         public void LogNotifiacation(string message)
         {
             Console.WriteLine($"Logging notification: {message}");
         }
-
-
     }
 }
